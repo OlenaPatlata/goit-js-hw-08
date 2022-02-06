@@ -1,1 +1,1 @@
-import './sass/main.scss';
+// import validatePasword from './js/validate-password';
