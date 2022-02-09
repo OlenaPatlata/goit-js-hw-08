@@ -38,10 +38,13 @@ function onTextInput(event) {
         const formData = {
         ...parsedData,
         [name] : value,    
-    };
-    localStorage.setItem(KEY_STORAGE, JSON.stringify(formData))
+        };
+        localStorage.setItem(KEY_STORAGE, JSON.stringify(formData))
+        } else {
+        const formData = {[name] : value, 
+        };
+        localStorage.setItem(KEY_STORAGE, JSON.stringify(formData))
     }
-    
 }
 
 // Функция, которая вытягивает из localStorage сохраненные данные и если они есть, то записывает их в соответствующие поля формы
