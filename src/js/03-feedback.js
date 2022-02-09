@@ -33,21 +33,27 @@ function onFormSubmit(event) {
 // Функция для получения значений из формы и сохранения их в localStorage
 function onTextInput(event) {
     const { name, value } = event.target;
-    const parsedData = JSON.parse(localStorage.getItem(KEY_STORAGE)) ?? {};
-    const formData = {
+    const parsedData = JSON.parse(localStorage.getItem(KEY_STORAGE));
+    if (parsedData) {
+        const formData = {
         ...parsedData,
         [name] : value,    
     };
     localStorage.setItem(KEY_STORAGE, JSON.stringify(formData))
+    }
+    
 }
 
 // Функция, которая вытягивает из localStorage сохраненные данные и если они есть, то записывает их в соответствующие поля формы
 function populateText() {
-    const parsedData = JSON.parse(localStorage.getItem(KEY_STORAGE)) ?? {};
-    const inputNames = Object.keys(parsedData);
+    const parsedData = JSON.parse(localStorage.getItem(KEY_STORAGE));
+    if (parsedData) {
+        const inputNames = Object.keys(parsedData);
     inputNames.forEach(inputName => {
         const input = formRef.elements[inputName];
         input.value = parsedData[inputName];
     });
+    }
+
 }
 
